@@ -92,8 +92,7 @@ img {
 }
 
 .section {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
+  scroll-snap-align:center
 }
 
 /*===== LAYOUT =====*/
