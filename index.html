@@ -198,11 +198,11 @@
                 <h2 class="section-title">Contact</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Send" class="contact__button button">
+                        <form id="contact-form" class="contact__form">
+                        <input type="text" placeholder="Name" class="contact__input" id="name" required>
+                        <input type="email" placeholder="Email" class="contact__input" id="email" required>
+                        <textarea id="message" cols="0" rows="10" class="contact__input" placeholder="Message" required></textarea>
+                        <input type="submit" value="Send" class="contact__button button">
                     </form>
                 </div>
             </section>
@@ -225,6 +225,38 @@
 
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
+        <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script type="text/javascript">
+           (function(){
+              emailjs.init("JOTCEzUmsG4PkiO1W"); // Thay YOUR_USER_ID bằng User ID của bạn từ EmailJS
+           })();
+        </script>
+        
+        <script type="text/javascript">
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+        
+                // Lấy giá trị từ các trường đầu vào
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+        
+                // Gửi dữ liệu qua EmailJS
+                emailjs.send("service_4c41ow8", "template_5ap5skf", {
+                    from_name: name,
+                    from_email: email,
+                    message: message
+                })
+                .then(function(response) {
+                   console.log('SUCCESS!', response.status, response.text);
+                   alert('Your message has been sent successfully!');
+                }, function(error) {
+                   console.log('FAILED...', error);
+                   alert('Failed to send your message. Please try again later.');
+                });
+            });
+        </script>
+
     </body>
 </html>
 
