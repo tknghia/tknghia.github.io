@@ -293,14 +293,20 @@ img {
 .skills__html {
   width: 95%;
 }
-.skills__css {
+.skills__node {
   width: 85%;
 }
-.skills__js {
+.skills__mongo {
   width: 65%;
 }
-.skills__ux {
-  width: 85%;
+.skills__socket {
+  width: 65%;
+}
+.skills__git {
+  width: 65%;
+}
+.skills__sql {
+  width: 65%;
 }
 .skills__img {
   border-radius: 0.5rem;
